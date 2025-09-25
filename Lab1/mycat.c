@@ -49,7 +49,7 @@ int main(int argc, char* argv[]){
             process_file(file, flags);
         } 
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 void process_file(FILE *file, int flags){    

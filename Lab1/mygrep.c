@@ -12,7 +12,7 @@ int main(int argc, char* argv[]){
     }
 
     if (optind == argc){
-        perror("Нет регулярки\n");
+        perror("Нет регулярки");
         return EXIT_FAILURE;
     }
     char* pattern = argv[optind];
@@ -21,8 +21,8 @@ int main(int argc, char* argv[]){
     regex_t regex;
     int value = regcomp(&regex, pattern, 0);
     if (value != 0){
-        perror("Ошибка в регулярном выражении\n");
-        return EXIT_FAILURE;
+        perror("Ошибка в регулярном выражении");
+        exit(EXIT_FAILURE);
     }
 
     if (optind >= argc){
@@ -39,7 +39,7 @@ int main(int argc, char* argv[]){
         }
     }
     regfree(&regex);
-
+    return 0;
 }
 
 void grep_file(FILE *file, regex_t *regex){
