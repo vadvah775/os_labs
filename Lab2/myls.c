@@ -141,6 +141,7 @@ void print_short_format(){
 
         printf("%s%s ", get_file_color(file_info.st_mode),  files_list[i]->d_name);
     }
+    printf("%s\n", COLOR_RESET);
     printf("\n");
 }
 
