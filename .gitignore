@@ -8,3 +8,5 @@
 \ls
 \fork
 \chmod
+\pipe_and_fifo
+\archiver
