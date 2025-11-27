@@ -9,7 +9,6 @@
 #include <errno.h>
 
 #define NAME_SIZE 256
-#define ARCHIVER_VERSION 1
 
 typedef struct {
     char name[NAME_SIZE];
