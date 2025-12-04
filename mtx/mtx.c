@@ -31,6 +31,7 @@ void* foo_read(void* arg){
         pthread_mutex_lock(&mtx);
         fprintf(stdout, "[Thr#%lu] %d %d %d %d %d\n", (unsigned long)tid, mas[0], mas[1], mas[2], mas[3], mas[4]);
         pthread_mutex_unlock(&mtx);
+        usleep(1);
     }
 
     pthread_exit(NULL);
