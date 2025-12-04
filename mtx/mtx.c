@@ -15,7 +15,7 @@ void* foo_write(void* arg){
         pthread_mutex_lock(&mtx);
         mas[i] = i + 1;
         pthread_mutex_unlock(&mtx);
-        usleep(500);
+        usleep(5);
     }
 
     pthread_exit(NULL);
