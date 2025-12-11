@@ -25,7 +25,7 @@ int main(int argc, char** argv){
     key_t shmKey = ftok(FILENAME, 1);
     if(shmKey == -1){
         perror("shmkey");
-        return -1;
+        return 1;
     }
 
     shmId = shmget(shmKey, BUFSIZE, 0);
@@ -51,9 +51,4 @@ int main(int argc, char** argv){
         
         sleep(2);
     }
-
-
-
-
-
 }

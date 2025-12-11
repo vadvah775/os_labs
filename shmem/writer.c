@@ -28,20 +28,20 @@ int main(int argc, char** argv){
     int fd = open(FILENAME, O_WRONLY | O_CREAT);
     if(fd == -1){
         perror("open file");
-        return -1;
+        return 1;
     }
     close(fd);
 
     key_t shmKey = ftok(FILENAME, 1);
     if(shmKey == -1){
         perror("ftok");
-        return -1;
+        return 1;
     } 
 
     shmId = shmget(shmKey, BUFSIZE, IPC_CREAT | IPC_EXCL | 0660);
     if (shmId == -1){
         perror("shmget");
-        return -1;
+        return 1;
     }
 
     signal(SIGINT, free_at_exit);
@@ -61,7 +61,5 @@ int main(int argc, char** argv){
 
         sleep(1);
     }
-
-
     return 0;
 }
