@@ -11,7 +11,7 @@ reader.o: reader.c
 	gcc reader.c -c ${FLAGS}
 
 writer: writer.o
-	gcc writer.o -o writer
+	gcc writer.o -o writer 
 
 writer.o: writer.c
 	gcc writer.c -c ${FLAGS}

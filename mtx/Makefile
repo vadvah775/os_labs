@@ -5,7 +5,7 @@ TARGETS = mtx
 all: $(TARGETS)
 
 mtx: mtx.c
-	$(CC) $(CFLAGS) -o mtx mtx.c
+	$(CC) $(CFLAGS) -o mtx mtx.c -lpthread
 
 clean:
 	rm -f $(TARGETS)
