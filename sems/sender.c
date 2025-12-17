@@ -67,8 +67,6 @@ int main() {
         strcpy(shared_memory, message);
         sem_unlock(sem_id);
         
-        printf("Sent: %s\n", message);
-        
         sleep(3);
     }
     
