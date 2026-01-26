@@ -6,10 +6,26 @@
 #include <sys/shm.h>
 #include <sys/sem.h>
 #include <time.h>
+#include <signal.h>
 
 #define SHM_SIZE 256
 #define SHM_KEY 1
 #define SEM_KEY 5
+
+
+void cleanup(int sig) {
+    int shm_id = shmget(SHM_KEY, SHM_SIZE, 0666);
+    if (shm_id >= 0) {
+        shmctl(shm_id, IPC_RMID, NULL);
+    }
+    
+    int sem_id = semget(SEM_KEY, 1, 0666);
+    if (sem_id >= 0) {
+        semctl(sem_id, 0, IPC_RMID);
+    }
+    
+    exit(0);
+}
 
 // операции с семафором
 void sem_lock(int sem_id) {
@@ -23,6 +39,9 @@ void sem_unlock(int sem_id) {
 }
 
 int main() {
+    signal(SIGINT, cleanup);
+    signal(SIGTERM, cleanup);
+    
     int shm_id, sem_id;
     char* shared_memory;
     time_t rawtime;

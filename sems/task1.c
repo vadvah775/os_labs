@@ -15,7 +15,6 @@ void* writer_thread(void* arg) {
     int counter = 1;
     
     while (1) {
-        sem_wait(&semaphore);
         
         snprintf(buffer, BUFFER_SIZE, "Record %d", counter++);
         
@@ -37,9 +36,6 @@ void* reader_thread(void* arg) {
         
         printf("[Reader TID: %lu] Buffer: %s\n", (unsigned long)tid, buffer);
         
-        sem_post(&semaphore);
-        
-        usleep(100000);
     }
     
     pthread_exit(NULL);
